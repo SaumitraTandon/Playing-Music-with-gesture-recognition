@@ -180,7 +180,7 @@ def main():
         # Screen reflection #############################################################
         cv.imshow('Hand Gesture Recognition', debug_image)
 
-        time.sleep(2)
+        # time.sleep(1)
     cap.release()
     cv.destroyAllWindows()
 
@@ -505,9 +505,38 @@ def play_sound(file):
         time.sleep(0.1)
 
 # Define sound files
-sound_both_open = "F sharp.mp3"
-sound_both_close = "G sharp .mp3"
-sound_single_hand = "C sharp.mp3"
+### Major Cords
+sound_1 = "Chords/Major/A.mp3"
+sound_2 = "Chords/Major/B.mp3"
+sound_3 = "Chords/Major/C.mp3"
+sound_4 = "Chords/Major/D.mp3"
+sound_5 = "Chords/Major/E.mp3"
+sound_6 = "Chords/Major/F.mp3"
+sound_7 = "Chords/Major/G.mp3"
+
+### Minor Cords
+sound_8 = "Chords/Minor/Am.mp3"
+sound_9 = "Chords/Minor/Bm.mp3"
+sound_10 = "Chords/Minor/Cm.mp3"
+sound_11 = "Chords/Minor/Dm.mp3"
+sound_12 = "Chords/Minor/Em.mp3"
+sound_13 = "Chords/Minor/Fm.mp3"
+sound_14 = "Chords/Minor/Gm.mp3"
+
+### Flat Cords
+sound_15 = "Chords/Flat/A flat .mp3"
+sound_16 = "Chords/Flat/B flat .mp3"
+sound_17 = "Chords/Flat/D flat .mp3"
+sound_18 = "Chords/Flat/E flat .mp3"
+sound_19 = "Chords/Flat/G flat .mp3"
+
+### Sharp Cords
+sound_20 = "Chords/Sharp/A sharp .mp3"
+sound_21 = "Chords/Sharp/C sharp.mp3"
+sound_22 = "Chords/Sharp/D sharp.mp3"
+sound_23 = "Chords/Sharp/F sharp.mp3"
+sound_24 = "Chords/Sharp/G sharp .mp3"
+sound_25 = "Chords/1-second-of-silence.mp3"
 
 def process_gesture_output(detected_hands):
     global gesture_memory  # Explicitly use global variable
@@ -526,19 +555,62 @@ def process_gesture_output(detected_hands):
         else:
             return  # Skip redundant processing
 
-    time.sleep(0.2)  # Small delay to allow pairing
+    # time.sleep(0.2)  # Small delay to allow pairing
 
     if gesture_memory["Left"] and gesture_memory["Right"]:
-        if gesture_memory["Left"] == "Open" and gesture_memory["Right"] == "Open":
-            play_sound(sound_both_open)
-        elif gesture_memory["Left"] == "Close" and gesture_memory["Right"] == "Close":
-            play_sound(sound_both_close)
-
+        if gesture_memory["Left"] == "thumb" and gesture_memory["Right"] == "thumb":
+            play_sound(sound_1)
+        elif gesture_memory["Left"] == "thumb" and gesture_memory["Right"] == "thumbindex":
+            play_sound(sound_2)
+        elif gesture_memory["Left"] == "thumb" and gesture_memory["Right"] == "thumbindexmiddle":
+            play_sound(sound_3)
+        elif gesture_memory["Left"] == "thumb" and gesture_memory["Right"] == "thumbindexmiddleringpinky":
+            play_sound(sound_4)
+        elif gesture_memory["Left"] == "thumb" and gesture_memory["Right"] == "fist":
+            play_sound(sound_5)
+        elif gesture_memory["Left"] == "thumb" and gesture_memory["Right"] == "index":
+            play_sound(sound_6)
+        elif gesture_memory["Left"] == "thumb" and gesture_memory["Right"] == "indexpinky":
+            play_sound(sound_7)
+        elif gesture_memory["Left"] == "thumbindex" and gesture_memory["Right"] == "thumb":
+            play_sound(sound_8)
+        elif gesture_memory["Left"] == "thumbindex" and gesture_memory["Right"] == "thumbindex":
+            play_sound(sound_9)
+        elif gesture_memory["Left"] == "thumbindex" and gesture_memory["Right"] == "thumbindexmiddle":
+            play_sound(sound_10)
+        elif gesture_memory["Left"] == "thumbindex" and gesture_memory["Right"] == "thumbindexmiddleringpinky":
+            play_sound(sound_11)
+        elif gesture_memory["Left"] == "thumbindex" and gesture_memory["Right"] == "fist":
+            play_sound(sound_12)
+        elif gesture_memory["Left"] == "thumbindex" and gesture_memory["Right"] == "index":
+            play_sound(sound_13)
+        elif gesture_memory["Left"] == "thumbindex" and gesture_memory["Right"] == "indexpinky":
+            play_sound(sound_14)
+        elif gesture_memory["Left"] == "fist" and gesture_memory["Right"] == "thumb":
+            play_sound(sound_15)
+        elif gesture_memory["Left"] == "fist" and gesture_memory["Right"] == "thumbindex":
+            play_sound(sound_16)
+        elif gesture_memory["Left"] == "fist" and gesture_memory["Right"] == "thumbindexmiddle":
+            play_sound(sound_17)
+        elif gesture_memory["Left"] == "fist" and gesture_memory["Right"] == "thumbindexmiddleringpinky":
+            play_sound(sound_18)
+        elif gesture_memory["Left"] == "fist" and gesture_memory["Right"] == "fist":
+            play_sound(sound_19)
+        elif gesture_memory["Left"] == "index" and gesture_memory["Right"] == "thumb":
+            play_sound(sound_20)
+        elif gesture_memory["Left"] == "index" and gesture_memory["Right"] == "thumbindex":
+            play_sound(sound_21)
+        elif gesture_memory["Left"] == "index" and gesture_memory["Right"] == "thumbindexmiddle":
+            play_sound(sound_22)
+        elif gesture_memory["Left"] == "index" and gesture_memory["Right"] == "thumbindexmiddleringpinky":
+            play_sound(sound_23)
+        elif gesture_memory["Left"] == "index" and gesture_memory["Right"] == "fist":
+            play_sound(sound_24)
         # Reset memory after playing sound
         gesture_memory["Left"] = None
         gesture_memory["Right"] = None
     else:
-        play_sound(sound_single_hand)
+        play_sound(sound_25)
 
 def draw_info_text(image, brect, handedness, hand_sign_text, finger_gesture_text):
     cv.rectangle(image, (brect[0], brect[1]), (brect[2], brect[1] - 22), (0, 0, 0), -1)

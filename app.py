@@ -180,7 +180,7 @@ def main():
         # Screen reflection #############################################################
         cv.imshow('Hand Gesture Recognition', debug_image)
 
-        time.sleep(2)
+        time.sleep(5)
     cap.release()
     cv.destroyAllWindows()
 
@@ -553,7 +553,7 @@ def draw_info_text(image, brect, handedness, hand_sign_text, finger_gesture_text
         time.sleep(0.2)  # Small delay to allow pairing
 
         if gesture_memory["Left"] and gesture_memory["Right"]:
-            if gesture_memory["Left"] == "Open" and gesture_memory["Right"] == "Open":
+            if gesture_memory["Left"] == "thumb" and gesture_memory["Right"] == "thumb":
                 play_sound(sound_both_open)
             # elif gesture_memory["Left"] == "Close" and gesture_memory["Right"] == "Close":
             #     play_sound(sound_both_close)

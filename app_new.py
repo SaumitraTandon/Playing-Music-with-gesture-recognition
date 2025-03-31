@@ -512,7 +512,7 @@ def draw_info_text(image, brect, handedness, hand_sign_text, finger_gesture_text
     #                cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
 
     # Print output in the terminal
-    # print(f"Detected Hand: {hand_label}, Gesture: {hand_sign_text}")
+    print(f"Detected Hand: {hand_label}, Gesture: {hand_sign_text}")
 
     return image
 
