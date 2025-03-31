@@ -502,7 +502,7 @@ def play_sound(file):
     pygame.mixer.music.load(file)
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy():
-        time.sleep(0.1)
+        time.sleep(0)
 
 # Define sound files
 ### Major Cords
@@ -590,21 +590,21 @@ def process_gesture_output(detected_hands):
             play_sound(sound_15)
         elif gesture_memory["Left"] == "fist" and gesture_memory["Right"] == "thumbindex":
             play_sound(sound_16)
-        elif gesture_memory["Left"] == "fist" and gesture_memory["Right"] == "thumbindexmiddle":
-            play_sound(sound_17)
         elif gesture_memory["Left"] == "fist" and gesture_memory["Right"] == "thumbindexmiddleringpinky":
-            play_sound(sound_18)
+            play_sound(sound_17)
         elif gesture_memory["Left"] == "fist" and gesture_memory["Right"] == "fist":
+            play_sound(sound_18)
+        elif gesture_memory["Left"] == "fist" and gesture_memory["Right"] == "indexpinky":
             play_sound(sound_19)
         elif gesture_memory["Left"] == "index" and gesture_memory["Right"] == "thumb":
             play_sound(sound_20)
-        elif gesture_memory["Left"] == "index" and gesture_memory["Right"] == "thumbindex":
-            play_sound(sound_21)
         elif gesture_memory["Left"] == "index" and gesture_memory["Right"] == "thumbindexmiddle":
-            play_sound(sound_22)
+            play_sound(sound_21)
         elif gesture_memory["Left"] == "index" and gesture_memory["Right"] == "thumbindexmiddleringpinky":
+            play_sound(sound_22)
+        elif gesture_memory["Left"] == "index" and gesture_memory["Right"] == "index":
             play_sound(sound_23)
-        elif gesture_memory["Left"] == "index" and gesture_memory["Right"] == "fist":
+        elif gesture_memory["Left"] == "index" and gesture_memory["Right"] == "indexpinky":
             play_sound(sound_24)
         # Reset memory after playing sound
         gesture_memory["Left"] = None
